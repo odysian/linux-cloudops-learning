@@ -13,20 +13,22 @@ echo -e "\nList of log files updated in last 24 hours"
 LOG_FILES=$(find . -name "*.log" -mtime -1)
 echo "$LOG_FILES"
 
-echo -e "\nSearching ${ERROR_PATTERNS[0]} logs in application.log file"
-grep "${ERROR_PATTERNS[0]}" "$LOG_DIR/$APP_LOG_FILE"
+for LOG_FILE in $LOG_FILES; do
+    echo -e "\nSearching ${ERROR_PATTERNS[0]} logs in $LOG_FILE file"
+    grep "${ERROR_PATTERNS[0]}" "$LOG_FILE"
 
-echo -e "\nNumber of ${ERROR_PATTERNS[0]} logs found in application.log" 
-grep -c "${ERROR_PATTERNS[0]}" "$LOG_DIR/$APP_LOG_FILE"
+    echo -e "\nNumber of ${ERROR_PATTERNS[0]} logs found in $LOG_FILE" 
+    grep -c "${ERROR_PATTERNS[0]}" "$LOG_FILE"
 
-echo -e "\nNumber of ${ERROR_PATTERNS[1]} logs found in application.log"
-grep -c "${ERROR_PATTERNS[1]}" "$LOG_DIR/$APP_LOG_FILE"
+    echo -e "\nSearching ${ERROR_PATTERNS[1]} logs in $LOG_FILE file"
+    grep "${ERROR_PATTERNS[1]}" "$LOG_FILE"
 
-echo -e "\nNumber of ${ERROR_PATTERNS[1]} logs found in system.log"
-grep -c "${ERROR_PATTERNS[1]}" "$LOG_DIR/$SYS_LOG_FILE"
+    echo -e "\nNumber of ${ERROR_PATTERNS[1]} logs found in $LOG_FILE"
+    grep -c "${ERROR_PATTERNS[1]}" "$LOG_FILE"
 
-echo -e "\nNumber of ${ERROR_PATTERNS[2]} logs found in system.log"
-grep -c "${ERROR_PATTERNS[2]}" "$LOG_DIR/$SYS_LOG_FILE"
+    echo -e "\nSearching ${ERROR_PATTERNS[2]} logs in $LOG_FILE file"
+    grep "${ERROR_PATTERNS[2]}" "$LOG_FILE"
 
-echo -e "\n${ERROR_PATTERNS[2]} log files in system.log file"
-grep "${ERROR_PATTERNS[2]}" "$LOG_DIR/$SYS_LOG_FILE"
+    echo -e "\nNumber of ${ERROR_PATTERNS[2]} logs found in $LOG_FILE"
+    grep -c "${ERROR_PATTERNS[2]}" "$LOG_FILE"
+done
