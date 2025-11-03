@@ -1,11 +1,11 @@
 #!/bin/bash
 
-LOG_DIR="/home/odys/Linux-Learning/Logs"
+LOG_DIR="/home/odys/linux-cloudops-learning/bash-practice/Logs"
 APP_LOG_FILE="application.log"
 SYS_LOG_FILE="system.log"
 
 ERROR_PATTERNS=("ERROR" "FATAL" "CRITICAL")
-REPORT_FILE="/home/odys/Linux-Learning/Logs/log_analysis_report.txt"
+REPORT_FILE="/home/odys/linux-cloudops-learning/bash-practice/Logs/log_analysis_report.txt"
 
 echo "Analyzing log files" > "$REPORT_FILE"
 echo "===================" >> "$REPORT_FILE"
